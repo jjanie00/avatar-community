@@ -25,7 +25,7 @@ export default function CustomButton({
       ]}
       {...props}
     >
-      <Text style={styles[varient]}>{label}</Text>
+      <Text style={styles.text}>{label}</Text>
     </Pressable>
   );
 }
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
   medium: {},
   filled: {
     backgroundColor: colors.ORANGE_600,
+  },
+  text: {
     fontSize: 14,
     fontWeight: "bold",
     color: colors.WHITE,
