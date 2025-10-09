@@ -24,6 +24,18 @@ export default function AuthLayout() {
           ),
         }}
       />
+      <Stack.Screen
+        name="login"
+        options={{
+          title: "이메일 로그인",
+        }}
+      />
+      <Stack.Screen
+        name="signup"
+        options={{
+          title: "회원가입",
+        }}
+      />
     </Stack>
   );
 }
