@@ -22,7 +22,11 @@ export default function InputWithLabel({
     <View>
       {label && <Text style={styles.label}>{label}</Text>}
       <View style={[styles.container, styles[varient]]}>
-        <TextInput style={styles.input} {...props} />
+        <TextInput
+          style={styles.input}
+          placeholderTextColor={colors.GRAY_500}
+          {...props}
+        />
       </View>
     </View>
   );
