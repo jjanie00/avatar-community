@@ -14,7 +14,7 @@ export default function AuthLayout() {
       }}
     >
       <Stack.Screen
-        name="index"
+        name="auth"
         options={{
           title: "로그인",
           headerLeft: () => (
