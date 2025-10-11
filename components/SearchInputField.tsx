@@ -4,6 +4,7 @@ import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
 const SearchInputField = ({ ...props }) => {
+  // todo :: SearchInput 구조 파악하기, 나중에 더 빠르게 마크업 구현할 수 있게 
   return (
     <View style={styles.container}>
       <TextInput
