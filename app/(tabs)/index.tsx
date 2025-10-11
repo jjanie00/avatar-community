@@ -1,21 +1,34 @@
 // home screen
-import CustomButton from "@/components/CustomButton";
-import InputField from "@/components/InputField";
+import SearchInputField from "@/components/SearchInputField";
 import { router } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Text>Home</Text>
-      <CustomButton
-        label="버튼"
-        onPress={() => {
-          router.push("/auth");
-        }}
-      />
-      <InputField label="소개" varient="filled" />
+    <View style={styles.container}>
+      {/* header */}
+      <View style={styles.header}>
+        <Pressable onPress={() => router.push("/auth")}>
+          <Image
+            source={require("@/assets/images/profile.png")}
+            style={{ width: 44, height: 44 }}
+          />
+        </Pressable>
+        <SearchInputField />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  header: {
+    flexDirection: "row",
+    gap: 8,
+  },
+});
