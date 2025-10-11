@@ -23,7 +23,7 @@ export default function LoginScreen() {
           secureTextEntry={true}
         />
       </View>
-      <CTAButton label="로그인하기" />
+      <CTAButton label="로그인하기" onPress={() => {}} />
     </>
   );
 }

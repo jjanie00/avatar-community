@@ -32,7 +32,7 @@ export default function SignupScreen() {
           secureTextEntry={true}
         />
       </View>
-      <CTAButton label="회원가입하기 " />
+      <CTAButton label="회원가입하기 " onPress={() => {}} />
     </>
   );
 }
