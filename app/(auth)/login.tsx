@@ -1,5 +1,6 @@
-import CustomButton from "@/components/CustomButton";
+import CTAButton from "@/components/CTAButton";
 import InputWithLabel from "@/components/InputField";
+import { colors } from "@/constants";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -22,9 +23,7 @@ export default function LoginScreen() {
           secureTextEntry={true}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <CustomButton label={"로그인하기"} />
-      </View>
+      <CTAButton label="로그인하기" />
     </>
   );
 }
@@ -38,9 +37,11 @@ const styles = StyleSheet.create({
   buttonContainer: {
     position: "absolute",
     bottom: 0,
-    paddingHorizontal: 16,
+    width: "100%",
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: colors.GRAY_300,
     paddingTop: 12,
     paddingBottom: 50, // figma(34), 하단 여백 부족으로 수정
-    width: "100%",
+    paddingHorizontal: 16,
   },
 });

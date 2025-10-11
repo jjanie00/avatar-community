@@ -1,10 +1,12 @@
-import CustomButton from "@/components/CustomButton";
+import CTAButton from "@/components/CTAButton";
 import InputWithLabel from "@/components/InputField";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function SignupScreen() {
-  // todo :: 빈 화면이 보이는 이슈, 레이아웃 stack 에 auth 추가
+  const inset = useSafeAreaInsets(); // Safe Area 정보 제공
+
   return (
     <>
       <View style={styles.container}>
@@ -30,9 +32,7 @@ export default function SignupScreen() {
           secureTextEntry={true}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <CustomButton label={"회원가입하기"} />
-      </View>
+      <CTAButton label="회원가입하기 " />
     </>
   );
 }
@@ -42,13 +42,5 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 16,
     gap: 16,
-  },
-  buttonContainer: {
-    position: "absolute",
-    bottom: 0,
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 50, // figma(34), 하단 여백 부족으로 수정
-    width: "100%",
   },
 });
