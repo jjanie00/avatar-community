@@ -26,7 +26,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="01-profile"
         options={{
           title: "프로필",
           tabBarIcon: ({ color, focused }) => (
@@ -39,7 +39,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="02-eat"
+        options={{
+          title: "냠냠",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "restaurant" : "restaurant-outline"}
+              size={22}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="03-settings"
         options={{
           title: "설정",
           tabBarIcon: ({ color, focused }) => (
