@@ -3,7 +3,14 @@ import FeedItem from "@/components/FeedItem";
 import SearchInputField from "@/components/SearchInputField";
 import { router } from "expo-router";
 import React from "react";
-import { Image, Pressable, StyleSheet, View } from "react-native";
+import {
+  Image,
+  Platform,
+  Pressable,
+  StatusBar,
+  StyleSheet,
+  View,
+} from "react-native";
 
 export default function HomeScreen() {
   return (
@@ -16,7 +23,7 @@ export default function HomeScreen() {
             style={{ width: 44, height: 44 }}
           />
         </Pressable>
-        <SearchInputField />
+        <SearchInputField readOnly onPress={() => router.push("/search")} />
       </View>
       <View style={styles.feedItemContainer}>
         <FeedItem />
@@ -37,7 +44,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    // 안드로이드 StatusBar 고려
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 8,
+    paddingBottom: 8,
   },
   feedItemContainer: {
     paddingTop: 12,
