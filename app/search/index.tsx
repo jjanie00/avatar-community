@@ -6,6 +6,10 @@ import React from "react";
 import { Platform, Pressable, StatusBar, StyleSheet, View } from "react-native";
 
 export default function SearchScreen() {
+  const handleSubmit = (text: string) => {
+    console.log("검색", text);
+  };
+
   return (
     <View style={styles.container}>
       {/* header */}
@@ -13,7 +17,7 @@ export default function SearchScreen() {
         <Pressable onPress={() => router.push("/")}>
           <Feather name="arrow-left" size={24} color="black" />
         </Pressable>
-        <SearchInputField />
+        <SearchInputField onSubmit={handleSubmit} />
       </View>
     </View>
   );
