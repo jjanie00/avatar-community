@@ -1,7 +1,8 @@
 import FeedItem from "@/components/FeedItem";
+import { colors } from "@/constants";
 import { Post } from "@/types";
 import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, View } from "react-native";
 
 const dummyData: Post[] = [
   {
@@ -14,7 +15,7 @@ const dummyData: Post[] = [
     author: {
       id: 1,
       nickname: "요리왕김치",
-      imageUri: "https://via.placeholder.com/50",
+      imageUri: "",
     },
     imageUris: [
       { id: 1, uri: "https://via.placeholder.com/300x200" },
@@ -36,7 +37,7 @@ const dummyData: Post[] = [
     author: {
       id: 2,
       nickname: "커피러버",
-      imageUri: "https://via.placeholder.com/50",
+      imageUri: "",
     },
     imageUris: [{ id: 3, uri: "https://via.placeholder.com/300x200" }],
     likes: [{ userId: 1 }, { userId: 5 }],
@@ -99,7 +100,7 @@ const dummyData: Post[] = [
     author: {
       id: 3,
       nickname: "배고픈토끼",
-      imageUri: "https://via.placeholder.com/50",
+      imageUri: "",
     },
     imageUris: [],
     likes: [{ userId: 1 }, { userId: 2 }, { userId: 4 }, { userId: 6 }],
@@ -118,7 +119,7 @@ const dummyData: Post[] = [
     author: {
       id: 4,
       nickname: "디저트헌터",
-      imageUri: "https://via.placeholder.com/50",
+      imageUri: "",
     },
     imageUris: [
       { id: 4, uri: "https://via.placeholder.com/300x200" },
@@ -148,7 +149,7 @@ const dummyData: Post[] = [
     author: {
       id: 5,
       nickname: "베이킹초보",
-      imageUri: "https://via.placeholder.com/50",
+      imageUri: "",
     },
     imageUris: [{ id: 7, uri: "https://via.placeholder.com/300x200" }],
     likes: [
@@ -168,15 +169,22 @@ const dummyData: Post[] = [
 ];
 
 const FeedList = () => {
+  const ItemSeparator = () => (
+    <View style={{ height: 12, backgroundColor: colors.GRAY_200 }} />
+  );
+
   return (
     <FlatList
       data={dummyData}
-      renderItem={({ item }) => <FeedItem post={item} />}
+      renderItem={({ item }) => {
+        if (!item) return null;
+        return <FeedItem post={item} />;
+      }}
+      keyExtractor={(item) => item.id.toString()}
       showsVerticalScrollIndicator={false} // 세로 스크롤바 숨김
+      ItemSeparatorComponent={ItemSeparator}
     />
   );
 };
 
 export default FeedList;
-
-const styles = StyleSheet.create({});

@@ -11,32 +11,39 @@ interface FeedItemProps {
 }
 
 const FeedItem = ({ isLiked = false, post }: FeedItemProps) => {
-  // // post 가 undefined 일 경우 null 반환
-  // if (!post) {
-  //   return null;
-  // }
+  // post 가 undefined 일 경우 null 반환
+  if (!post) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={styles.authorContainer}>
           <Image
-            source={require("@/assets/images/profile_feedItem.png")}
+            source={
+              post.author?.imageUri
+                ? { uri: post.author.imageUri }
+                : require("@/assets/images/profile_feedItem.png")
+            }
             style={styles.profileImage}
           />
           <View style={{ flexDirection: "column", gap: 4 }}>
-            <Text style={styles.author}>코이</Text>
-            <Text style={styles.createdAt}>1시간 전</Text>
+            <Text style={styles.author}>{post.author.nickname}</Text>
+            <Text style={styles.createdAt}>
+              {new Date(post.createdAt).toLocaleDateString("ko-KR", {
+                month: "short",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </Text>
           </View>
         </View>
         <Feather name="more-vertical" size={24} color="black" />
       </View>
-      <Text style={{ fontSize: 16 }} numberOfLines={3} ellipsizeMode="tail">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.
+      <Text style={styles.description} numberOfLines={3} ellipsizeMode="tail">
+        {post.description}
       </Text>
       <View style={styles.menuContainer}>
         <Pressable style={styles.menu}>
@@ -46,16 +53,16 @@ const FeedItem = ({ isLiked = false, post }: FeedItemProps) => {
             color={colors.ORANGE_600}
           />
           <Text style={isLiked ? styles.activeMenuText : styles.menuText}>
-            1
+            {post.likes.length}
           </Text>
         </Pressable>
         <Pressable style={styles.menu}>
           <Octicons name="comment" size={16} color={colors.ORANGE_600} />
-          <Text>1</Text>
+          <Text style={styles.menuText}>{post.commentCount}</Text>
         </Pressable>
         <Pressable style={styles.menu}>
           <Octicons name="eye" size={16} color={colors.ORANGE_600} />
-          <Text>1</Text>
+          <Text style={styles.menuText}>{post.viewCount}</Text>
         </Pressable>
       </View>
     </View>
@@ -116,5 +123,16 @@ const styles = StyleSheet.create({
   createdAt: {
     fontSize: 12,
     color: colors.GRAY_500,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "black",
+    marginBottom: 8,
+  },
+  description: {
+    fontSize: 16,
+    color: "black",
+    lineHeight: 22,
   },
 });

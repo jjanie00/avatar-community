@@ -1,6 +1,7 @@
 // home screen
-import FeedItem from "@/components/FeedItem";
+import FeedList from "@/components/FeedList";
 import SearchInputField from "@/components/SearchInputField";
+import { colors } from "@/constants";
 import { router } from "expo-router";
 import React from "react";
 import {
@@ -25,11 +26,8 @@ export default function HomeScreen() {
         </Pressable>
         <SearchInputField readOnly onPress={() => router.push("/search")} />
       </View>
-      <View style={styles.feedItemContainer}>
-        <FeedItem />
-        <FeedItem />
-        <FeedItem />
-        <FeedItem />
+      <View style={styles.feedListContainer}>
+        <FeedList />
       </View>
     </View>
   );
@@ -48,9 +46,8 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 8,
     paddingBottom: 8,
   },
-  feedItemContainer: {
+  feedListContainer: {
     paddingTop: 12,
-    gap: 12,
-    backgroundColor: "#E2E8F0",
+    backgroundColor: colors.GRAY_200,
   },
 });
