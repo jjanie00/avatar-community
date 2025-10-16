@@ -93,3 +93,11 @@ export type {
   Profile,
   VoteOption,
 };
+
+// custom types
+// login, signup form values
+export type FormValues = {
+  email: string;
+  password: string;
+  passwordConfirm?: string;
+};
