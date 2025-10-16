@@ -21,6 +21,10 @@ export default function SignupScreen() {
     },
   });
 
+  const onSubmit = (formValues: FormValues) => {
+    console.log(formValues);
+  };
+
   return (
     <FormProvider {...signupForm}>
       <View style={styles.container}>
@@ -28,7 +32,10 @@ export default function SignupScreen() {
         <PasswordInput />
         <PasswordConfirm />
       </View>
-      <CTAButton label="회원가입하기 " onPress={() => {}} />
+      <CTAButton
+        label="회원가입하기"
+        onPress={signupForm.handleSubmit(onSubmit)}
+      />
     </FormProvider>
   );
 }
