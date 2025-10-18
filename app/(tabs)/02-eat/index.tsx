@@ -21,6 +21,7 @@ export default function EatFoodScreen() {
 
   // 현재 터치한 좌표가 이미지 내부에 있는지 확인
   const isInsideImage = (x: number, y: number) => {
+    console.log("isInsideImage"); // X
     return (
       x >= imageLayout.x &&
       x <= imageLayout.x + imageLayout.width &&
@@ -33,9 +34,10 @@ export default function EatFoodScreen() {
     // 이미지 레이아웃 설정 이전 드래그 비활성화
     .enabled(isImageReady())
     .onStart((e) => {
+      console.log("start", e); // O
+      // isInsideImage 함수 실행 타이밍 이슈
       // const outside = !isInsideImage(e.absoluteX, e.absoluteY);
       // startedOutside.current = outside; // true, false
-      console.log("start", e);
     });
   // .onUpdate((e) => {
   //   if (startedOutside.current && isInsideImage(e.absoluteX, e.absoluteY)) {
